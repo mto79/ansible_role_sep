@@ -1,0 +1,9 @@
+---
+# ansible_role_sep/vars/windows.yml
+# Author: MTO
+# Description: Vars for installing Symantec Endpoint Protection client for Windows.
+# 
+sep_win_repo: "https://repomanager.nationaalarchief.net/repository/raw-symantec/symantec/windows"
+sep_win_dir_install: "C:\Utils"
+sep_win_file_install: "SEP-WinServer-setup-v14.2.4815.exe"
+sep_win_file_ps1: "PS-Install-SEPM-Server-Client.ps1"

@@ -1,0 +1,5 @@
+---
+# ansible_role_sep/tasks/redhat_uninstall.yml
+# Author: MTO 
+# Description: Tasks for installing Symantec Endpoint Protection client for Redhat.
+# 

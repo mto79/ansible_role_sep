@@ -1,0 +1,10 @@
+---
+# ansible_role_sep/tasks/redhat_install.yml
+# Author: MTO 
+# Description: Tasks for installing Symantec Endpoint Protection client for Redhat.
+# 
+- name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
+  unarchive:
+    src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
+    dest: "sep_rh_dir_install"
+    remote_src: yes

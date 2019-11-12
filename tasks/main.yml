@@ -1,0 +1,19 @@
+---
+# ansible_role_sep/tasks/main.yml
+# Author: MTO 
+# Description: Tasks for installing Symantec Endpoint Protection client for Linux and Windows.
+# 
+- name: SEP - Display system, os, version and release 
+  debug: msg="SYSTEM {{ inventory_hostname }} | OS {{ ansible_distribution }} | VERSION {{ ansible_distribution_version }} | RELEASE {{ ansible_distribution_release }}"
+
+# Include variables and define needed variables.
+- name: SEP - Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: SEP - Install/Upgrade 
+  include_tasks: "{{ ansible_os_family | lower }}_install.yml"
+  tags: [ install, upgrade ]
+
+- name: SEP - Uninstall
+  include_tasks: "{{ ansible_os_family | lower }}_uninstall.yml"
+  tags: [ uninstall ]  
