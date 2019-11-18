@@ -10,9 +10,7 @@ galaxy_info:
       versions:
         - 7
         - 8
-    - name: Windows
-      versions:  
-        - 10       
+     
    
   galaxy_tags:
     - Virus
