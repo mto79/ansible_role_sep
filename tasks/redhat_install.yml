@@ -6,5 +6,17 @@
 - name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
-    dest: "sep_rh_dir_install"
+    dest: "{{ sep_rh_dir_install }}"
     remote_src: yes
+
+- name: SEP - Redhat - Set the execute file permissions on install.sh
+  file:
+    path: "{{ sep_rh_dir_install }}/install.sh"
+    owner: root
+    group: root
+    mode: '755'   
+
+- name: SEP - Redhat - Execute script install.sh
+  script: "install.sh"
+  args:
+    chdir: "{{ sep_rh_dir_install }}"
