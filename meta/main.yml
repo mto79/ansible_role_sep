@@ -1,6 +1,6 @@
 galaxy_info:
   author: MTO
-  description: Ansible Role - GitLab installation RedHat/Centos 
+  description: Ansible Role - GitLab installation RedHat/Centos.
   company: MTO
   license: "license (MIT)"
   min_ansible_version: 2.0
@@ -13,10 +13,10 @@ galaxy_info:
      
    
   galaxy_tags:
-    - Virus
-    - Symantec
+    - virus
+    - symantec
     - gitlab
-    - Windows 
+    - windows
     - redhat
     - rhel
     

@@ -12,19 +12,19 @@
   win_file:
     path: "{{ sep_win_dir_install }}"
     state: directory
-  when: folder_utils.stat.exists == false
+  when: folder_utils.stat.exists == False
 
 - name: SEP - Windows - Copy the installation exe file
   win_get_url:
     url: "{{ sep_win_repo }}/{{ sep_win_file_install }}"
     dest: '{{ sep_win_dir_install }}\{{ sep_win_file_install }}'
-  when: folder_utils.stat.exists == true
+  when: folder_utils.stat.exists == True
 
 - name: SEP - Windows - Copy the Powershell script
   win_get_url:
     url: "{{ sep_win_repo }}/{{ sep_win_file_ps1 }}"
     dest: '{{ sep_win_dir_install }}\{{ sep_win_file_ps1 }}'
-  when: folder_utils.stat.exists == true
+  when: folder_utils.stat.exists == True
 
 - name: SEP - Windows -  Execute the Powershell script
   win_shell: '{{ sep_win_dir_install }}\{{ sep_win_file_ps1 }} {{ sep_win_dir_install }}\{{ sep_win_file_install }} >> {{ sep_win_dir_install }}\PS-Install-SEPM-Server-Client.log'
