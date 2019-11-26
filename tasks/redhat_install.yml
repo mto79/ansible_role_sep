@@ -3,6 +3,14 @@
 # Author: MTO 
 # Description: Tasks for installing Symantec Endpoint Protection client for Redhat.
 # 
+- name: SEP - Redhat - Create directory {{ sep_rh_dir_install }}
+  file:
+    path: "{{ sep_rh_dir_install }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '755' 
+
 - name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
