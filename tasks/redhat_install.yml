@@ -11,6 +11,12 @@
     group: root
     mode: '755' 
 
+- name: SEP - Redhat - Install unzip
+  package:
+    name:
+      - unzip
+    state: latest
+    
 - name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
