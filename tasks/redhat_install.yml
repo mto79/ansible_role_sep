@@ -38,3 +38,10 @@
 
 - name: SEP - Redhat - Execute script install.sh
   command: sh -c "{{ sep_rh_dir_install }}/install.sh -i"
+  register: sep_install_output
+  ignore_errors: yes 
+
+- name: SEP - Redhat - Execute script install.sh
+  debug: msg="sep_install_output.stdout_lines"
+  
+  
