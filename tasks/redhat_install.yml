@@ -11,10 +11,13 @@
     group: root
     mode: '755' 
 
-- name: SEP - Redhat - Install unzip
+- name: SEP - Redhat - Install necessary packages
   package:
     name:
       - unzip
+      - gcc 
+      - kernel-devel
+      - kernel-headers  
     state: latest
 
 - name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
