@@ -16,7 +16,7 @@
     name:
       - unzip
     state: latest
-    
+
 - name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
@@ -31,6 +31,6 @@
     mode: '755'   
 
 - name: SEP - Redhat - Execute script install.sh
-  script: "install.sh"
+  script: "{{ sep_rh_dir_install }}/install.sh"
   args:
     chdir: "{{ sep_rh_dir_install }}"
