@@ -31,4 +31,4 @@
     mode: '755'   
 
 - name: SEP - Redhat - Execute script install.sh
-  command: sh "{{ sep_rh_dir_install }}/install.sh"
+  command: sh "{{ sep_rh_dir_install }}/install.sh -i"
