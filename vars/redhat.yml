@@ -3,6 +3,6 @@
 # Author: MTO
 # Description: Vars for installing Symantec Endpoint Protection client for Redhat.
 # 
-sep_rh_repo: "https://repomanager.nationaalarchief.net/repository/raw-symantec/symantec/redhat"
+sep_rh_repo: "https://repomanager.nationaalarchief.net/repository/raw-symantec/redhat"
 sep_rh_dir_install: "/tmp/sepfiles"
 sep_rh_file_install: "SymantecEndpointProtection.zip"
