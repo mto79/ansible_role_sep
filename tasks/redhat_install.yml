@@ -9,7 +9,7 @@
     state: directory
     owner: root
     group: root
-    mode: '777' 
+    mode: '755' 
 
 - name: SEP - Redhat - Install unzip
   package:
@@ -28,9 +28,7 @@
     path: "{{ sep_rh_dir_install }}/install.sh"
     owner: root
     group: root
-    mode: '777'   
+    mode: '755'   
 
 - name: SEP - Redhat - Execute script install.sh
-  script: "{{ sep_rh_dir_install }}/install.sh"
-  args:
-    chdir: "{{ sep_rh_dir_install }}"
+  command: sh "{{ sep_rh_dir_install }}/install.sh"
