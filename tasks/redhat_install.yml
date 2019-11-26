@@ -42,6 +42,6 @@
   ignore_errors: yes 
 
 - name: SEP - Redhat - Execute script install.sh
-  debug: msg="sep_install_output.stdout_lines"
+  debug: msg="{{ sep_install_output.stdout_lines }}"
   
   
