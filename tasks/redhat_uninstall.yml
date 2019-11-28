@@ -3,10 +3,10 @@
 # Author: MTO 
 # Description: Tasks for un-installing Symantec Endpoint Protection client for Redhat.
 # 
-- name: SEP - Redhat - Execute script install.sh to uninstall
+- name: SEP - Redhat - Uninstall - Execute script install.sh to uninstall
   command: sh -c "{{ sep_rh_dir_install }}/install.sh -u"
   register: sep_install_output
   ignore_errors: yes
 
-- name: SEP - Redhat - Execute script install.sh to uninstall
+- name: SEP - Redhat - Uninstall - Execute script install.sh to uninstall
   debug: msg="{{ sep_install_output.stdout_lines }}"

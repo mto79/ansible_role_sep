@@ -3,7 +3,7 @@
 # Author: MTO 
 # Description: Tasks for installing Symantec Endpoint Protection client for Redhat.
 # 
-- name: SEP - Redhat - Create directory {{ sep_rh_dir_install }}
+- name: SEP - Redhat - Install - Create directory {{ sep_rh_dir_install }}
   file:
     path: "{{ sep_rh_dir_install }}"
     state: directory
@@ -11,7 +11,7 @@
     group: root
     mode: '755' 
 
-- name: SEP - Redhat - Install necessary packages
+- name: SEP - Redhat - Install - packages
   package:
     name:
       - unzip
@@ -23,25 +23,24 @@
       - libX11.i686 
     state: latest
 
-- name: SEP - Redhat - Download and unarchive {{ sep_rh_file_install }}
+- name: SEP - Redhat - Install - Download and unarchive {{ sep_rh_file_install }}
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
     dest: "{{ sep_rh_dir_install }}"
     remote_src: yes
 
-- name: SEP - Redhat - Set the execute file permissions on install.sh
+- name: SEP - Redhat - Install -Set the execute file permissions on install.sh
   file:
     path: "{{ sep_rh_dir_install }}/install.sh"
     owner: root
     group: root
     mode: '755'   
 
-- name: SEP - Redhat - Execute script install.sh
+- name: SEP - Redhat - Install - Execute script install.sh
   command: sh -c "{{ sep_rh_dir_install }}/install.sh -i"
   register: sep_install_output
   ignore_errors: yes 
 
-- name: SEP - Redhat - Execute script install.sh
+- name: SEP - Redhat - Install - Execute script install.sh
   debug: msg="{{ sep_install_output.stdout_lines }}"
-  
   

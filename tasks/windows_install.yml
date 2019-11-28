@@ -3,28 +3,28 @@
 # Author: MTO 
 # Description: Tasks for installing Symantec Endpoint Protection client for Windows.
 # 
-- name: SEP - Windows - Obtain information about folder {{ sep_win_dir_install }}
+- name: SEP - Windows - Install - Obtain information about folder {{ sep_win_dir_install }}
   win_stat:
     path: "{{ sep_win_dir_install }}"
   register: folder_utils
 
-- name: SEP - Windows - Create directory {{ sep_win_dir_install }}
+- name: SEP - Windows - Install - Create directory {{ sep_win_dir_install }}
   win_file:
     path: "{{ sep_win_dir_install }}"
     state: directory
-  when: not folder_utils.stat.exists
+  when: folder_utils.stat.exists == false
 
-- name: SEP - Windows - Copy the installation exe file
+- name: SEP - Windows - Install - Copy the installation exe file
   win_get_url:
     url: "{{ sep_win_repo }}/{{ sep_win_file_install }}"
     dest: '{{ sep_win_dir_install }}\{{ sep_win_file_install }}'
-  when: folder_utils.stat.exists
+  when: folder_utils.stat.exists == true
 
-- name: SEP - Windows - Copy the Powershell script
+- name: SEP - Windows - Install - Copy the Powershell script
   win_get_url:
     url: "{{ sep_win_repo }}/{{ sep_win_file_ps1 }}"
     dest: '{{ sep_win_dir_install }}\{{ sep_win_file_ps1 }}'
-  when: folder_utils.stat.exists
+  when: folder_utils.stat.exists == true
 
-- name: SEP - Windows -  Execute the Powershell script
+- name: SEP - Windows - Install - Execute the Powershell script
   win_shell: '{{ sep_win_dir_install }}\{{ sep_win_file_ps1 }} {{ sep_win_dir_install }}\{{ sep_win_file_install }} >> {{ sep_win_dir_install }}\PS-Install-SEPM-Server-Client.log'
