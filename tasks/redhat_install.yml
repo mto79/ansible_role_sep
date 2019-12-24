@@ -3,7 +3,7 @@
 # Author: MTO 
 # Description: Tasks for installing Symantec Endpoint Protection client for Redhat.
 # 
-- name: SEP - Redhat - Install - Create directory {{ sep_rh_dir_install }}
+- name: SEP - Install - Create directory {{ sep_rh_dir_install }} (RedHat)
   file:
     path: "{{ sep_rh_dir_install }}"
     state: directory
@@ -11,36 +11,30 @@
     group: root
     mode: '755' 
 
-- name: SEP - Redhat - Install - packages
+- name: SEP - Install - packages (RedHat)
   package:
-    name:
-      - unzip
-      - gcc 
-      - kernel-devel
-      - kernel-headers 
-      - glibc.i686 
-      - libgcc.i686 
-      - libX11.i686 
+    name: "{{ sep_rh_packages }}"
     state: latest
 
-- name: SEP - Redhat - Install - Download and unarchive {{ sep_rh_file_install }}
+- name: SEP - Install - Download and unarchive {{ sep_rh_file_install }} (RedHat)
   unarchive:
     src: "{{ sep_rh_repo }}/{{ sep_rh_file_install }}"
     dest: "{{ sep_rh_dir_install }}"
     remote_src: yes
 
-- name: SEP - Redhat - Install -Set the execute file permissions on install.sh
+- name: SEP - Install -Set the execute file permissions on install.sh (RedHat)
   file:
     path: "{{ sep_rh_dir_install }}/install.sh"
     owner: root
     group: root
     mode: '755'   
 
-- name: SEP - Redhat - Install - Execute script install.sh
+- name: SEP - Install - Execute script install.sh (RedHat)
   command: sh -c "{{ sep_rh_dir_install }}/install.sh -i"
   register: sep_install_output
   ignore_errors: yes 
 
 - name: SEP - Redhat - Install - Execute script install.sh
-  debug: msg="{{ sep_install_output.stdout_lines }}"
+  debug: 
+    msg: "{{ sep_install_output.stdout_lines }}"
   

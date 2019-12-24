@@ -4,7 +4,8 @@
 # Description: Tasks for installing Symantec Endpoint Protection client for Linux and Windows.
 # 
 - name: SEP - Display system, os, version and release 
-  debug: msg="SYSTEM {{ inventory_hostname }} | OS {{ ansible_distribution }} | VERSION {{ ansible_distribution_version }} | RELEASE {{ ansible_distribution_release }}"
+  debug: 
+    msg: "SYSTEM {{ inventory_hostname }} | OS {{ ansible_distribution }} | VERSION {{ ansible_distribution_version }} | RELEASE {{ ansible_distribution_release }}"
 
 # Include variables and define needed variables.
 - name: SEP - Include OS-specific variables.

@@ -6,3 +6,11 @@
 sep_rh_repo: "https://repomanager.nationaalarchief.net/repository/raw-symantec/redhat"
 sep_rh_dir_install: "/tmp/sepfiles"
 sep_rh_file_install: "SymantecEndpointProtection.zip"
+sep_rh_packages:
+    - unzip
+    - gcc
+    - kernel-devel
+    - kernel-headers 
+    - glibc.i686 
+    - libgcc.i686 
+    - libX11.i686 
